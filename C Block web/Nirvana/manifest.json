@@ -1,0 +1,56 @@
+{
+  "name": "Nirvana",
+  "version": "0.93",
+  "manifest_version": 2,
+
+  "description": "Nirvana is a very  website blocker designed for personal use.",
+  "icons": {
+    "16": "icon.16.png",
+    "48": "icon.48.png",
+    "128": "icon.128.png"
+  },
+ "homepage_url": "https://vrgodparticles.000webhostapp.com/searchini.php",
+
+  "browser_action": {
+    "default_icon": "icon.128.png",
+    "default_popup": "popup.html"
+  },
+
+  "background": {
+    "scripts": ["js/background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "js/contentScript.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+
+  "web_accessible_resources": [
+    "blockedSite.html"
+  ],
+
+  "permissions": [
+    "*://*/*",
+    "tabs",
+    "activeTab",
+    "storage",
+    "webRequest",
+    "webRequestBlocking",
+    "webNavigation"
+  ],
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Alt+C"
+      }
+    }
+  },
+  "incognito": "split"
+}
